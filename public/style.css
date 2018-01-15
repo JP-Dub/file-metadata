@@ -82,9 +82,9 @@ footer p {
 }
 
 form {
-  margin-bottom: 25px;
+  margin-bottom: 2.5vmin;
   padding: 15px;
-  background-color: cyan;
+  background-color: #fce9e9;
   display: inline-block;
   width: 100%;
   max-width: 340px;
@@ -98,15 +98,15 @@ input {
   width: 100%;
   border: 1px solid lightgrey;
   border-radius: 3px;
-  font-size: 16px;
+  font-size: 1.3vmin;
 }
 
 button {
-  font-size: 16px;
-  border-radius: 3px;
+  font-size: 1.3vmin;
+  border-radius: .3vmin;
   background-color: lightgrey;
-  border: 1px solid grey;
-  box-shadow: 2px 2px teal;
+  border: .1vmin solid grey;
+  box-shadow: .2vmin .2vmin dimgrey;
   cursor: pointer;
 }
 
@@ -115,6 +115,8 @@ button:hover {
 }
 
 button:active {
+  margin-left: .2vmin;
+  margin-top: .2vmin;
   box-shadow: none;
 }
 
