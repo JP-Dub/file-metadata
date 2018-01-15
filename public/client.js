@@ -27,3 +27,6 @@ $(function() {
 });
 
 
+$('.bttn').on('click', function() {
+  $('#upload').click();
+});
