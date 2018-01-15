@@ -14,6 +14,7 @@ app.use(express.static('public'));
 
 // http://expressjs.com/en/starter/static-files.html
 app.use('/public', express.static(__dirname + '/public'));
+console.log(process.cwd())
 
 // http://expressjs.com/en/starter/basic-routing.html
 app.get("/", function (request, response) {

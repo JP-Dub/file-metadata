@@ -18,7 +18,7 @@ $(function() {
     var dream = $('input').val();
     $.post('/dreams?' + $.param({dream: dream}), function() {
       console.log(dream)
-      $('<li></li>').text(dream).appendTo('ul#dreams');
+      $('<p></p>').text(dream).appendTo('ul#dreams');
       $('input').val('');
       $('input').focus();
     });
