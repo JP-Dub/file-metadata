@@ -34,7 +34,7 @@ article {
   line-height: 20px;
   line-height: 2vmin;
   margin-top: -10px;
-  margin-top: 1vmin;
+  margin-top: -1vmin;
   padding-left: 20px;
   padding-left: 2vmin;
   text-align: left;
@@ -72,6 +72,7 @@ footer p {
   font-size: 1.2vmin;
   line-height: 20px;
   line-height: 2vmin;
+  font-family:;
 }
 
 .example {
@@ -83,20 +84,21 @@ footer p {
 
 form {
   margin-bottom: 2.5vmin;
-  padding: 15px;
+  padding: 1vmin 2vmin;
   background-color: #fce9e9;
   display: inline-block;
   width: 100%;
-  max-width: 340px;
-  border-radius: 3px;
+  max-width: 30vmin;
+  border-radius: .4vmin;
+  border: .05vmin solid black;
 }
 
 input {
   display: block;
-  margin-bottom: 10px;
-  padding: 5px;
+  margin-bottom: .5vmin;
+  padding: .3vmin;
   width: 100%;
-  border: 1px solid lightgrey;
+  border: .05vmin solid lightgrey;
   border-radius: 3px;
   font-size: 1.3vmin;
 }
