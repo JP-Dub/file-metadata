@@ -83,6 +83,7 @@ footer p {
 }
 
 form {
+  box-sizing: border-box;
   margin-bottom: 2.5vmin;
   padding: 1vmin 2vmin;
   background-color: #fce9e9;
@@ -90,7 +91,7 @@ form {
   width: 100%;
   max-width: 30vmin;
   border-radius: .4vmin;
-  border: .05vmin solid black;
+  border: .102vmin solid black;
 }
 
 input {
