@@ -105,7 +105,8 @@ input {
 }
 
 button {
-  justify-content: center;
+  height: 1.8vmin;
+  width: 8vmin;
   font-size: 1.3vmin;
   border-radius: .1vmin;
   background-color: lightgrey;
