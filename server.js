@@ -21,27 +21,29 @@ app.set("json spaces", 2);
 
 // retreive uploads and post data
 app.post('/uploads', function (req, res) {
-  
+  // create a new form object
   var form = new formidable.IncomingForm();
   form.uploadDir = './uploads';
 
+  // parse the new new form data
   form.parse(req, function(err, fields, files) {
     if(err) return console.error(err);
-      var obj = files.userFile + "b",
-           kb = Number((obj.size/1024).toFixed(2)) + "kb",
-           mb = Number((kb/1024).toFixed(2)) + "mb";
+      var obj = files.userFile,
+           kb = Number((obj.size/1024).toFixed(2)),
+           mb = Number((kb/1024).toFixed(2));
    
       var userFile = {File_uploaded : {Name: obj.name, 
                       Type: obj.type,
                       Size: 
-                        {bytes: obj.size,
-                         kilobytes: kb,
-                         megabytes: mb
+                        {Bytes: obj.size + " Bytes",
+                         Kilobytes: kb + " KB",
+                         Megabytes: mb + " MB"
                         }
                      }};
     
       // json results of file data
       res.json(userFile);
+    
     //removes file after data has been extracted
     fs.unlinkSync(obj.path);
     });
