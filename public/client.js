@@ -4,6 +4,8 @@
 // by default, you've got jQuery,
 // add other scripts at the bottom of index.html
 
+document.getElementByID('').action = "/uploads";
+/*
 $(function() {
   console.log('hello world :o');
   
@@ -14,17 +16,18 @@ $(function() {
   });
 
   $('form').submit(function(event) {
+    console.log('event', event)
     event.preventDefault();
     var dream = $('input').val();
     $.post('/uploads?' + $.param({uploads: dream}), function() {
-      $('<p></p>').text(dream).appendTo('ul#dreams');
+      $('<li></li>').text(dream).appendTo('ul#dreams');
       $('input').val('');
       $('input').focus();
     });
   });
 
 });
-
+*/
 /*
 $('.btn').on('click', function() {
   $('#upload').click();

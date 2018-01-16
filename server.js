@@ -6,6 +6,7 @@ var formidable = require('formidable');
 var express = require('express');
 var util = require('util');
 var app = express();
+var http = require('http');
 
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
@@ -31,10 +32,10 @@ app.post("/uploads", function (request, response) {
   response.sendStatus(200);
 });
 */
-/*
+
 app.post("/uploads", function (req, res) {
 console.log(req.query.uploads)
-  var read = req.query.uploads;
+  //var read = req.query.uploads;
   //console.log(req)
       var form = new formidable.IncomingForm();
       form.uploadDir = '/uploads';
@@ -42,7 +43,7 @@ console.log(req.query.uploads)
       var size = form.bytesRecieved;
       var expSize = form.bytesExpected;
 console.log(form)
-    form.parse(read, function(err, fields, files) {
+    form.parse(req, function(err, fields, files) {
       res.writeHead(200, {'content-type': 'text/plain'});
       res.write('received upload:\n\n');
       res.end(util.inspect({fields: fields, files: files}));
@@ -51,7 +52,7 @@ console.log(form)
     return;
 });
 
-*/
+
 
 // Simple in-memory store for now
 var upload = [
