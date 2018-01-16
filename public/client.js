@@ -4,10 +4,13 @@
 // by default, you've got jQuery,
 // add other scripts at the bottom of index.html
 
-document.getElementByID('').action = "/uploads";
-/*
-$(function() {
+
+//$(function() {
   console.log('hello world :o');
+  
+  
+document.getElementById('upload').action = "/uploads";
+console.log(document.getElementById("upload").action);
   
   $.get('/dreams', function(dreams) {
     dreams.forEach(function(dream) {
@@ -26,8 +29,8 @@ $(function() {
     });
   });
 
-});
-*/
+//});
+
 /*
 $('.btn').on('click', function() {
   $('#upload').click();

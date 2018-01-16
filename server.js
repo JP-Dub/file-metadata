@@ -19,11 +19,12 @@ app.use('/public', express.static(__dirname + '/public'));
 app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
-
+/*
 app.get("/dreams", function (request, response) {
-  console.log('request parameter', request.params, 'upload', upload)
+//  console.log('request parameter', request.params, 'upload', upload)
   response.send(upload);
 });
+*/
 /*
 // could also use the POST body instead of query string: http://expressjs.com/en/api.html#req.body
 app.post("/uploads", function (request, response) {
@@ -34,7 +35,7 @@ app.post("/uploads", function (request, response) {
 */
 
 app.post("/uploads", function (req, res) {
-console.log(req.query.uploads)
+//console.log(req.query.uploads)
   //var read = req.query.uploads;
   //console.log(req)
       var form = new formidable.IncomingForm();
@@ -42,7 +43,7 @@ console.log(req.query.uploads)
       //form.type = 'multipart';
       var size = form.bytesRecieved;
       var expSize = form.bytesExpected;
-console.log(form)
+//console.log(form)
     form.parse(req, function(err, fields, files) {
       res.writeHead(200, {'content-type': 'text/plain'});
       res.write('received upload:\n\n');
