@@ -19,19 +19,19 @@ app.get("/", function (request, response) {
 });
 
 app.get("/dreams", function (request, response) {
-  console.log('request parameter', request.params, 'dreams', dreams)
-  response.send(dreams);
+  console.log('request parameter', request.params, 'dreams', upload)
+  response.send(upload);
 });
 
 // could also use the POST body instead of query string: http://expressjs.com/en/api.html#req.body
 app.post("/dreams", function (request, response) {
-  dreams.push(request.query.dream);
+  upload.push(request.query.dream);
   console.log(request.query.dream)
   response.sendStatus(200);
 });
 
 // Simple in-memory store for now
-var dreams = [
+var upload = [
   "Find and count some sheep",
   "Climb a really tall mountain",
   "Wash the dishes"
