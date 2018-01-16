@@ -34,6 +34,7 @@ app.post('/uploads', function (req, res) {
       var obj = files.userFile,
            kb = Number((obj.size/1024).toFixed(2)),
            mb = Number((kb/1024).toFixed(2));
+     console.log(obj.path)
       
       var userFile = {File_uploaded : {Name: obj.name, 
                       Type: obj.type,
