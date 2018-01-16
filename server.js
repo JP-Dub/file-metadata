@@ -19,12 +19,14 @@ app.get("/", function (request, response) {
 });
 
 app.get("/dreams", function (request, response) {
+  console.log('request parameter', request.params, 'dreams', dreams)
   response.send(dreams);
 });
 
 // could also use the POST body instead of query string: http://expressjs.com/en/api.html#req.body
 app.post("/dreams", function (request, response) {
   dreams.push(request.query.dream);
+  console.log(request.query.dream)
   response.sendStatus(200);
 });
 
