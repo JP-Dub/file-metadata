@@ -21,21 +21,20 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
-
 app.post('/uploads', function (req, res) {
-  //var read = req.query.uploads;
-  //console.log(req)
+
       var form = new formidable.IncomingForm();
       form.uploadDir = './uploads';
       //form.type = 'multipart';
 
-  
     form.parse(req, function(err, fields, files) {
+      if(err) return console.error(err);
       var size = form.bytesRecieved;
       var expSize = form.bytesExpected;
+      console.log(files)
       res.writeHead(200, {'content-type': 'text/plain'});
       res.write('received upload:\n\n');
-      res.end(util.inspect({fields: fields, files: files}));
+      res.end(util.inspect({files: files}));
     });
  
     return;
