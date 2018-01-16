@@ -22,23 +22,23 @@ app.get("/", function (request, response) {
 });
 
 
-http.createServer(function (req, res) {
-  console.log(req.url)
-  if (req.url == './uploads') {
-    var form = new formidable.IncomingForm();
-    form.parse(req, function (err, fields, files) {
-      console.log(req)
-      res.write('File uploaded');
-      res.end(files);
+app.post('/uploads', function (req, res) {
+  //var read = req.query.uploads;
+  //console.log(req)
+      var form = new formidable.IncomingForm();
+      form.uploadDir = './uploads';
+      //form.type = 'multipart';
+
+  
+    form.parse(req, function(err, fields, files) {
+      var size = form.bytesRecieved;
+      var expSize = form.bytesExpected;
+      res.writeHead(200, {'content-type': 'text/plain'});
+      res.write('received upload:\n\n');
+      res.end(util.inspect({fields: fields, files: files}));
     });
-  } else {
-   // res.writeHead(200, {'Content-Type': 'text/html'});
-   // res.write('<form action="fileupload" method="post" enctype="multipart/form-data">');
-   // res.write('<input type="file" name="filetoupload"><br>');
-   // res.write('<input type="submit">');
-   // res.write('</form>');
-    return res.end();
-  }
+ 
+    return;
 });
 
 // listen for requests :)
@@ -49,6 +49,15 @@ var listener = app.listen(process.env.PORT, function () {
 
 
 /*
+  if (req.url == './uploads') {
+    var form = new formidable.IncomingForm();
+    form.parse(req, function (err, fields, files) {
+      console.log(req)
+      res.write('File uploaded');
+      res.end(files);
+
+
+
 app.get("/dreams", function (request, response) {
 //  console.log('request parameter', request.params, 'upload', upload)
   response.send(upload);
