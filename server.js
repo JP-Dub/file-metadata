@@ -40,7 +40,7 @@ app.post("/uploads", function (req, res) {
       var expSize = form.bytesExpected;
        
     form.parse(req, function(err, fields, files) {
-      console.log(req)
+      console.log(req.url)
       res.writeHead(200, {'content-type': 'text/plain'});
       res.write('received upload:\n\n');
       res.end(util.inspect({fields: fields, files: files}));
