@@ -9,9 +9,8 @@
   console.log('hello world :o');
   
   
-document.getElementById('upload').action = "/uploads";
-console.log(document.getElementById("upload").action);
-  
+
+/*  
   $.get('/dreams', function(dreams) {
     dreams.forEach(function(dream) {
       $('<li></li>').text(dream).appendTo('ul#dreams');
@@ -29,12 +28,17 @@ console.log(document.getElementById("upload").action);
     });
   });
 
+*/
+
 //});
 
-/*
+
 $('.btn').on('click', function() {
+  document.getElementById('upload').action = "/uploads";
+console.log(document.getElementById("upload").action);
   $('#upload').click();
 });
+             /*
 
 $(function() {
   console.log('hello world :o');
