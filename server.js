@@ -27,9 +27,9 @@ app.post('/uploads', function (req, res) {
 
   form.parse(req, function(err, fields, files) {
     if(err) return console.error(err);
-      var obj = files.userFile,
-           kb = Number((obj.size/1024).toFixed(2)),
-           mb = Number((kb/1024).toFixed(2));
+      var obj = files.userFile + "b",
+           kb = Number((obj.size/1024).toFixed(2)) + "kb",
+           mb = Number((kb/1024).toFixed(2)) + "mb";
    
       var userFile = {File_uploaded : {Name: obj.name, 
                       Type: obj.type,
