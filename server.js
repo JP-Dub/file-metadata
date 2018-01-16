@@ -21,6 +21,9 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
+// json layout
+app.set("json spaces", );
+
 app.post('/uploads', function (req, res) {
 
       var form = new formidable.IncomingForm();
@@ -34,15 +37,19 @@ app.post('/uploads', function (req, res) {
       var obj = files.userFile;     
       //console.log(obj.size)
       
-      
-      var userFile = {name: obj.name, 
+      var userFile = {File_uploaded : {name: obj.name, 
                       type: obj.type,
-                      size: obj.size
-                     };
+                      size: 
+                      {bytes: obj.size,
+                       kilobytes: ((obj.size/1024)).toFixed(2),
+                       megabytes: ((obj.size/1024)/1024).toFixed(2)
+                      }
+                     }};
       console.log(userFile)
-      res.writeHead(200, {'content-type': 'text/plain'});
-      res.write('received upload:\n\n');
-      res.end(util.inspect({files: files}));
+     // res.writeHead(200, {'content-type': 'text/plain'});
+     // res.write('received upload:\n\n');
+     // res.end(util.inspect({files: files}));
+      res.json(userFile)
     });
     return;
 });
