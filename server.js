@@ -31,23 +31,22 @@ app.post("/dreams", function (request, response) {
   response.sendStatus(200);
 });*/
 
-app.put("/uploads", function (req, res) {
-  
+app.post("/uploads", function (req, res) {
+  //console.log(req)
       var form = new formidable.IncomingForm();
       form.uploadDir = '/uploads';
-      form
- 
+      form.type = 'multipart';
+      var size = form.bytesRecieved;
+      var expSize = form.bytesExpected;
+       
     form.parse(req, function(err, fields, files) {
+      console.log(req)
       res.writeHead(200, {'content-type': 'text/plain'});
       res.write('received upload:\n\n');
       res.end(util.inspect({fields: fields, files: files}));
     });
  
     return;
-  
-  upload.push(req.query.uploads);
-  console.log(req)
-  res.sendStatus(200);
 });
 
 // Simple in-memory store for now
