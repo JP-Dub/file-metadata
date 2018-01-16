@@ -7,6 +7,7 @@ var express = require('express');
 var util = require('util');
 var app = express();
 var http = require('http');
+var fs = require('fs');
 
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
@@ -19,6 +20,34 @@ app.use('/public', express.static(__dirname + '/public'));
 app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
+
+
+http.createServer(function (req, res) {
+  console.log(req.url)
+  if (req.url == './uploads') {
+    var form = new formidable.IncomingForm();
+    form.parse(req, function (err, fields, files) {
+      console.log(req)
+      res.write('File uploaded');
+      res.end(files);
+    });
+  } else {
+   // res.writeHead(200, {'Content-Type': 'text/html'});
+   // res.write('<form action="fileupload" method="post" enctype="multipart/form-data">');
+   // res.write('<input type="file" name="filetoupload"><br>');
+   // res.write('<input type="submit">');
+   // res.write('</form>');
+    return res.end();
+  }
+});
+
+// listen for requests :)
+var listener = app.listen(process.env.PORT, function () {
+  console.log('Your app is listening on port ' + listener.address().port);
+});
+
+
+
 /*
 app.get("/dreams", function (request, response) {
 //  console.log('request parameter', request.params, 'upload', upload)
@@ -33,7 +62,7 @@ app.post("/uploads", function (request, response) {
   response.sendStatus(200);
 });
 */
-
+/*
 app.post("/uploads", function (req, res) {
 //console.log(req.query.uploads)
   //var read = req.query.uploads;
@@ -60,7 +89,3 @@ var upload = [
   "Wash the dishes"
 ];
 */
-// listen for requests :)
-var listener = app.listen(process.env.PORT, function () {
-  console.log('Your app is listening on port ' + listener.address().port);
-});

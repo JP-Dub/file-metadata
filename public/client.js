@@ -31,14 +31,14 @@
 */
 
 //});
-
+/*
 
 $('.btn').on('click', function() {
   document.getElementById('upload').action = "/uploads";
 console.log(document.getElementById("upload").action);
  
 });
-             /*
+   */          /*
 
 $(function() {
   console.log('hello world :o');
