@@ -4,10 +4,10 @@
 // init project
 var formidable = require('formidable');
 var express = require('express');
-var util = require('util');
+//var util = require('util');
 var app = express();
-var http = require('http');
-var fs = require('fs');
+//var http = require('http');
+//var fs = require('fs');
 
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
@@ -22,34 +22,29 @@ app.get("/", function (request, response) {
 });
 
 // json layout
-app.set("json spaces", );
+app.set("json spaces", 2);
 
 app.post('/uploads', function (req, res) {
+  
+  var form = new formidable.IncomingForm();
+  form.uploadDir = './uploads';
 
-      var form = new formidable.IncomingForm();
-      form.uploadDir = './uploads';
-      //form.type = 'multipart';
-      var size = form.bytesRecieved;
-      var expSize = form.bytesExpected;
-
-    form.parse(req, function(err, fields, files) {
-      if(err) return console.error(err);
-      var obj = files.userFile;     
-      //console.log(obj.size)
+  form.parse(req, function(err, fields, files) {
+    if(err) return console.error(err);
+      var obj = files.userFile,
+           kb = Number((obj.size/1024).toFixed(2)),
+           mb = Number((kb/1024).toFixed(2));
       
-      var userFile = {File_uploaded : {name: obj.name, 
-                      type: obj.type,
-                      size: 
+      var userFile = {File_uploaded : {Name: obj.name, 
+                      Type: obj.type,
+                      Size: 
                       {bytes: obj.size,
-                       kilobytes: ((obj.size/1024)).toFixed(2),
-                       megabytes: ((obj.size/1024)/1024).toFixed(2)
+                       kilobytes: kb,
+                       megabytes: mb
                       }
                      }};
-      console.log(userFile)
-     // res.writeHead(200, {'content-type': 'text/plain'});
-     // res.write('received upload:\n\n');
-     // res.end(util.inspect({files: files}));
-      res.json(userFile)
+
+      res.json(userFile);
     });
     return;
 });
@@ -58,56 +53,3 @@ app.post('/uploads', function (req, res) {
 var listener = app.listen(process.env.PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
-
-
-
-/*
-  if (req.url == './uploads') {
-    var form = new formidable.IncomingForm();
-    form.parse(req, function (err, fields, files) {
-      console.log(req)
-      res.write('File uploaded');
-      res.end(files);
-
-
-
-app.get("/dreams", function (request, response) {
-//  console.log('request parameter', request.params, 'upload', upload)
-  response.send(upload);
-});
-*/
-/*
-// could also use the POST body instead of query string: http://expressjs.com/en/api.html#req.body
-app.post("/uploads", function (request, response) {
-  upload.push(request.query.uploads);
-  console.log(request.query.uploads)
-  response.sendStatus(200);
-});
-*/
-/*
-app.post("/uploads", function (req, res) {
-//console.log(req.query.uploads)
-  //var read = req.query.uploads;
-  //console.log(req)
-      var form = new formidable.IncomingForm();
-      form.uploadDir = './uploads';
-      //form.type = 'multipart';
-      var size = form.bytesRecieved;
-      var expSize = form.bytesExpected;
-//console.log(form)
-    form.parse(req, function(err, fields, files) {
-      res.writeHead(200, {'content-type': 'text/plain'});
-      res.write('received upload:\n\n');
-      res.end(util.inspect({fields: fields, files: files}));
-    });
- 
-    return;
-});
-
-// Simple in-memory store for now
-var upload = [
-  "Find and count some sheep",
-  "Climb a really tall mountain",
-  "Wash the dishes"
-];
-*/
