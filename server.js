@@ -17,11 +17,11 @@ console.log(process.cwd())
 app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
-
+/*
 app.get("/dreams", function (request, response) {
-  console.log('request parameter', request.params, 'dreams', upload)
+  console.log('request parameter', request.params, 'upload', upload)
   response.send(upload);
-});
+});*/
 
 // could also use the POST body instead of query string: http://expressjs.com/en/api.html#req.body
 app.post("/dreams", function (request, response) {
