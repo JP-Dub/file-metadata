@@ -1,13 +1,8 @@
-// server.js
-// where your node app starts
-
 // init project
-var formidable = require('formidable');
-var express = require('express');
-//var util = require('util');
-var app = express();
-//var http = require('http');
-var fs = require('fs');
+var formidable = require('formidable'),
+    express = require('express'),
+    fs = require('fs'),
+    app = express();
 
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
@@ -24,6 +19,7 @@ app.get("/", function (request, response) {
 // json layout
 app.set("json spaces", 2);
 
+// retreive uploads and post data
 app.post('/uploads', function (req, res) {
   
   var form = new formidable.IncomingForm();
@@ -52,7 +48,7 @@ app.post('/uploads', function (req, res) {
     return;
 });
 
-// listen for requests :)
+// listen for requests 
 var listener = app.listen(process.env.PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
