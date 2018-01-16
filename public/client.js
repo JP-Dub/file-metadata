@@ -36,7 +36,7 @@
 $('.btn').on('click', function() {
   document.getElementById('upload').action = "/uploads";
 console.log(document.getElementById("upload").action);
-  $('#upload').click();
+ 
 });
              /*
 

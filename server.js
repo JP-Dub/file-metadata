@@ -39,7 +39,7 @@ app.post("/uploads", function (req, res) {
   //var read = req.query.uploads;
   //console.log(req)
       var form = new formidable.IncomingForm();
-      form.uploadDir = '/uploads';
+      form.uploadDir = './uploads';
       //form.type = 'multipart';
       var size = form.bytesRecieved;
       var expSize = form.bytesExpected;
@@ -53,15 +53,13 @@ app.post("/uploads", function (req, res) {
     return;
 });
 
-
-
 // Simple in-memory store for now
 var upload = [
   "Find and count some sheep",
   "Climb a really tall mountain",
   "Wash the dishes"
 ];
-
+*/
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);
