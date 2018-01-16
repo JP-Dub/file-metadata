@@ -7,7 +7,7 @@ var express = require('express');
 //var util = require('util');
 var app = express();
 //var http = require('http');
-//var fs = require('fs');
+var fs = require('fs');
 
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
@@ -34,18 +34,20 @@ app.post('/uploads', function (req, res) {
       var obj = files.userFile,
            kb = Number((obj.size/1024).toFixed(2)),
            mb = Number((kb/1024).toFixed(2));
-     console.log(obj.path)
-      
+   
       var userFile = {File_uploaded : {Name: obj.name, 
                       Type: obj.type,
                       Size: 
-                      {bytes: obj.size,
-                       kilobytes: kb,
-                       megabytes: mb
-                      }
+                        {bytes: obj.size,
+                         kilobytes: kb,
+                         megabytes: mb
+                        }
                      }};
-
+    
+      // json results of file data
       res.json(userFile);
+    //removes file after data has been extracted
+    fs.unlinkSync(obj.path);
     });
     return;
 });
