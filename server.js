@@ -26,17 +26,24 @@ app.post('/uploads', function (req, res) {
       var form = new formidable.IncomingForm();
       form.uploadDir = './uploads';
       //form.type = 'multipart';
+      var size = form.bytesRecieved;
+      var expSize = form.bytesExpected;
 
     form.parse(req, function(err, fields, files) {
       if(err) return console.error(err);
-      var size = form.bytesRecieved;
-      var expSize = form.bytesExpected;
-      console.log(files)
+      var obj = files.userFile;     
+      //console.log(obj.size)
+      
+      
+      var userFile = {name: obj.name, 
+                      type: obj.type,
+                      size: obj.size
+                     };
+      console.log(userFile)
       res.writeHead(200, {'content-type': 'text/plain'});
       res.write('received upload:\n\n');
       res.end(util.inspect({files: files}));
     });
- 
     return;
 });
 
